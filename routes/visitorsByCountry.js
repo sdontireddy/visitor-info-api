@@ -12,11 +12,7 @@ const tableName = 'usvisitorybycountry';
 
 //AWS.config.update({ region: 'us-east-1' });
 
-AWS.config.update({
-    accessKeyId: "AKIAZSD5P3GEEYOCHPBI",
-    secretAccessKey: "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",
-    "region": "us-east-1"   
-}); 
+
 
 router.get("/",(req,res,next)=>{
     console.log("Start DB..");
@@ -30,6 +26,7 @@ router.get("/",(req,res,next)=>{
        
         if(err){
             console.log("Error : " + err)
+            res.send("Error Connecting to DB");
         }else{
 
            
@@ -41,7 +38,7 @@ router.get("/",(req,res,next)=>{
                
             }
             res.contentType('application/json');
-res.send(items);
+            res.send(items);
         }
 
     });
